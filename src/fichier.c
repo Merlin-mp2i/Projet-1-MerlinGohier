@@ -22,11 +22,11 @@ Fichier *creer_fichier (char *name, dossier *parent){
     if (parent != NULL){
         if(est_vide_dossier_f(parent)){
             parent->fn += 1;
-            parent->files = malloc(sizeof(dossier));
+            parent->files = malloc(sizeof(Fichier));
         }
         else{
             parent->fn += 1;
-            parent->files = realloc(parent->next, parent->fd * sizeof(dossier));
+            parent->files = realloc(parent->files, parent->fn * sizeof(Fichier));
 
         }
         parent->files[parent->fn-1] = f;

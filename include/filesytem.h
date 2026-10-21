@@ -45,8 +45,17 @@ dossier *creer_dossier(const char *name, dossier *parent);
 
 Filesystem *init_Filesystem(void);
 
+int longueur_premier_element(const char *chemin);
+
+dossier *chercher_sous_dossier(dossier *parent, const char *nom);
+
+Filesystem *déplacement(Filesystem *fs, char *destination);
+
 Fichier *creer_fichier(char *name, dossier *parent);
 
-void afficher_dossier(dossier *d, int profondeur);
+void afficher_arborescence (dossier*d, int profondeur);
+
+void afficher_dossier(dossier *d);
+
 
 #endif

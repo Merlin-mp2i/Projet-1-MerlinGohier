@@ -46,7 +46,7 @@ dossier *creer_dossier(const char *name, dossier *parent){
     return d;
 }
 
-void afficher_dossier (dossier*d, int profondeur){
+void afficher_arborescence (dossier*d, int profondeur){
     for (int i = 0; i < profondeur; i++) {
         printf(" ");
     }
@@ -61,7 +61,16 @@ void afficher_dossier (dossier*d, int profondeur){
     }
     if(!est_vide_dossier_d(d)){
         for(int i = 0; i < d->fd; i++){
-            afficher_dossier(d->next[i],profondeur+1 );
+            afficher_arborescence(d->next[i],profondeur+1 );
         }
     }
+}
+
+void afficher_dossier (dossier*d){
+    for(int i = 0; i < d->fn; i++){
+        printf("|__%s \n", d->files[i]->name);
+        }
+        for(int i = 0; i < d->fd; i++){
+            printf("|__%s \n", d->next[i]->name);
+        }
 }
