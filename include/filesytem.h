@@ -53,6 +53,12 @@ Filesystem *déplacement(Filesystem *fs, char *destination);
 
 Fichier *creer_fichier(char *name, dossier *parent);
 
+void read_fichier(Fichier *f);
+
+void write_fichier(Fichier *f, char *text);
+
+void append_fichier(Fichier *f, char *text);
+
 void afficher_arborescence (dossier*d, int profondeur);
 
 void afficher_dossier(dossier *d);
