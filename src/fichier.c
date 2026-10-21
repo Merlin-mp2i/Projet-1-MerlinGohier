@@ -86,3 +86,47 @@ void append_fichier(Fichier *f, char *text){
 
     f->content = nouveau_contenu;
 }
+
+int indice_fichier(dossier *parent, const char *nom){
+    for(int i = 0; i< parent->fn; i++ ){
+        if(strcmp(nom, parent->files[i]->name) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
+
+void suprimer_fichier (dossier *parent, const char *nom){
+    int indice;
+    int i;
+    Fichier **nouveaux_fichiers;
+
+    if (parent == NULL || nom == NULL) {
+        return;
+    }
+
+    indice = indice_fichier(parent, nom);
+    if (indice == -1) {
+        return;
+    }
+
+    free(parent->files[indice]->content);
+    free(parent->files[indice]->name);
+    free(parent->files[indice]);
+
+    for (i = indice; i < parent->fn - 1; i++) {
+        parent->files[i] = parent->files[i + 1];
+    }
+
+    parent->fn -= 1;
+
+    if (parent->fn == 0) {
+        free(parent->files);
+        parent->files = NULL;
+    } else {
+        nouveaux_fichiers = realloc(parent->files, parent->fn * sizeof(Fichier *));
+        if (nouveaux_fichiers != NULL) {
+            parent->files = nouveaux_fichiers;
+        }
+    }
+}

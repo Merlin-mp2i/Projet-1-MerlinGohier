@@ -59,6 +59,10 @@ void write_fichier(Fichier *f, char *text);
 
 void append_fichier(Fichier *f, char *text);
 
+int indice_fichier(dossier *parent, const char *nom);
+
+void suprimer_fichier(dossier *parent, const char *nom);
+
 void afficher_arborescence (dossier*d, int profondeur);
 
 void afficher_dossier(dossier *d);
