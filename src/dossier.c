@@ -74,3 +74,58 @@ void afficher_dossier (dossier*d){
             printf("|__%s \n", d->next[i]->name);
         }
 }
+
+int indice_dossier(dossier *parent, const char *nom){
+    for(int i = 0; i< parent->fd; i++ ){
+        if(strcmp(nom, parent->next[i]->name) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
+
+void suprimer_dossier(dossier *parent, const char *nom){
+    int indice;
+    int i;
+    dossier **nouveaux_dossier;
+    dossier *a_supprimer;
+
+    if (parent == NULL || nom == NULL) {
+        return;
+    }
+
+    indice = indice_dossier(parent, nom);
+    if (indice == -1) {
+        return;
+    }
+
+    a_supprimer = parent->next[indice];
+
+    /* On vide tous les fichiers du dossier. */
+    while (a_supprimer->fn > 0) {
+        suprimer_fichier(a_supprimer, a_supprimer->files[0]->name);
+    }
+
+    /* On vide tous les sous-dossiers, y compris leur contenu. */
+    while (a_supprimer->fd > 0) {
+        suprimer_dossier(a_supprimer, a_supprimer->next[0]->name);
+    }
+
+    free(a_supprimer->name);
+    free(a_supprimer);
+
+    for (i = indice; i < parent->fd - 1; i++) {
+        parent->next[i] = parent->next[i + 1];
+    }
+    parent->fd -= 1;
+
+    if (parent->fd == 0) {
+        free(parent->next);
+        parent->next = NULL;
+    } else {
+        nouveaux_dossier = realloc(parent->next, parent->fd * sizeof(dossier *));
+        if (nouveaux_dossier != NULL) {
+            parent->next = nouveaux_dossier;
+        }
+    }
+}

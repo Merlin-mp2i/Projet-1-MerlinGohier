@@ -41,6 +41,10 @@ typedef struct
 bool est_vide_dossier_d(dossier *p);
 bool est_vide_dossier_f(dossier *p);
 
+int indice_dossier(dossier *parent, const char *nom);
+
+void suprimer_dossier(dossier *parent, const char *nom);
+
 dossier *creer_dossier(const char *name, dossier *parent);
 
 Filesystem *init_Filesystem(void);
