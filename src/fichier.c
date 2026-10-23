@@ -1,7 +1,6 @@
 #include "../include/filesytem.h"
 
-/* Methode fichier */
-
+/* Cree un fichier vide puis l'ajoute au dossier parent. */
 Fichier *creer_fichier (char *name, dossier *parent){
     Fichier *f = malloc(sizeof(Fichier));
     if (f == NULL) {
@@ -17,6 +16,7 @@ Fichier *creer_fichier (char *name, dossier *parent){
 
 
     f->content = NULL;
+    f->taille = 0;
     f->parent = parent;
 
     if (parent != NULL){
@@ -41,6 +41,7 @@ void read_fichier (Fichier *f){
     }
 }
 
+/* Remplace entierement le contenu d'un fichier. */
 void write_fichier (Fichier *f, char *text){
     char *nouveau_contenu;
 
@@ -56,8 +57,10 @@ void write_fichier (Fichier *f, char *text){
     strcpy(nouveau_contenu, text);
     free(f->content);
     f->content = nouveau_contenu;
+    f->taille = strlen(text);
 }
 
+/* Agrandit le contenu du fichier puis ajoute le nouveau texte a la fin. */
 void append_fichier(Fichier *f, char *text){
     char *nouveau_contenu;
     int taille_ancien;
@@ -85,6 +88,7 @@ void append_fichier(Fichier *f, char *text){
     }
 
     f->content = nouveau_contenu;
+    f->taille = strlen(f->content);
 }
 
 int indice_fichier(dossier *parent, const char *nom){
@@ -96,6 +100,7 @@ int indice_fichier(dossier *parent, const char *nom){
     return -1;
 }
 
+/* Libere le fichier puis decale les fichiers suivants dans le tableau. */
 void suprimer_fichier (dossier *parent, const char *nom){
     int indice;
     int i;

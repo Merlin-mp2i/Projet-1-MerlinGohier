@@ -1,7 +1,5 @@
 #include "../include/filesytem.h"
 
-/* Methode dossier */
-
 bool est_vide_dossier_d(dossier *p){
     return p->fd == 0;
 }
@@ -11,6 +9,7 @@ bool est_vide_dossier_f(dossier *p){
 }
 
 
+/* Cree un dossier vide et l'ajoute au dossier parent. */
 dossier *creer_dossier(const char *name, dossier *parent){
     dossier *d = malloc(sizeof(dossier));
     if (d == NULL) {
@@ -46,6 +45,7 @@ dossier *creer_dossier(const char *name, dossier *parent){
     return d;
 }
 
+/* Affiche le dossier, ses fichiers, puis ses sous-dossiers. */
 void afficher_arborescence (dossier*d, int profondeur){
     for (int i = 0; i < profondeur; i++) {
         printf(" ");
@@ -84,6 +84,7 @@ int indice_dossier(dossier *parent, const char *nom){
     return -1;
 }
 
+/* Vide recursivement le dossier avant de le retirer de son parent. */
 void suprimer_dossier(dossier *parent, const char *nom){
     int indice;
     int i;
