@@ -1,0 +1,47 @@
+Commandes de test à taper une par une dans le programme.
+
+Test 1 : créer un dossier et un fichier
+
+mkdir cours
+cd cours
+touch note
+write note Bonjour
+read note
+
+Résultat attendu : Bonjour
+
+Test 2 : ajouter du texte
+
+append note MP2I
+read note
+
+Résultat attendu : BonjourMP2I
+
+Test 3 : revenir à la racine et afficher l'arborescence
+
+cd ..
+arbo
+
+Résultat attendu : le dossier root contient le dossier cours, qui contient le fichier note.
+
+Test 4 : vérifier l'espace occupé
+
+space
+
+Résultat attendu : 11 caractères sont utilisés pour le fichier note.
+
+Test 5 : supprimer le dossier et vérifier que l'espace revient à 0
+
+del cours
+space
+
+Résultat attendu : 0 caractère utilisé.
+
+Test 6 : erreurs simples
+
+read inexistant
+commande_inconnue
+
+Résultat attendu : un message indique que le fichier ou la commande est introuvable.
+
+exit
