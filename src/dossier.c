@@ -50,15 +50,13 @@ void afficher_arborescence (dossier*d, int profondeur){
     for (int i = 0; i < profondeur; i++) {
         printf(" ");
     }
-    printf("%s 
-",d->name);
+    printf("%s \n",d->name);
     if(!est_vide_dossier_f(d)){
         for(int i = 0; i < d->fn; i++){
             for (int j = 0; j < profondeur + 1; j++) {
                 printf(" ");
             }
-            printf("|__%s 
-", d->files[i]->name);
+            printf("|__%s \n", d->files[i]->name);
         }
     }
     if(!est_vide_dossier_d(d)){
@@ -70,12 +68,10 @@ void afficher_arborescence (dossier*d, int profondeur){
 
 void afficher_dossier (dossier*d){
     for(int i = 0; i < d->fn; i++){
-        printf("|__%s 
-", d->files[i]->name);
+        printf("|__%s \n", d->files[i]->name);
         }
         for(int i = 0; i < d->fd; i++){
-            printf("|__%s 
-", d->next[i]->name);
+            printf("|__%s \n", d->next[i]->name);
         }
 }
 
