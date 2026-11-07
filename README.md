@@ -40,7 +40,7 @@ gcc main.c src/dossier.c src/fichier.c src/filesysteme.c -o filesystem.exe
 
 Puis taper :
 
-.ilesystem.exe
+./filesystem.exe
 
 EXEMPLE D'UTILISATION
 
