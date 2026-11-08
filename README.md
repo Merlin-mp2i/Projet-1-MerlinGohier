@@ -2,11 +2,11 @@ PROJET 1 : SYSTÈME DE FICHIERS SIMPLIFIÉ EN C
 
 IDENTIFICATION
 
-Étudiant : Merlin Goyet
+Étudiant : Merlin Gohier
 Projet réalisé seul.
 Projet choisi : création d'un système de fichiers simplifié.
 Dépôt GitHub : https://github.com/Merlin-mp2i/Projet-1-MerlinGohier
-Date du dernier commit : à compléter juste avant le rendu.
+Date du dernier commit : 08/11/2026
 
 PRÉSENTATION
 
@@ -65,6 +65,6 @@ Les données sont conservées seulement pendant l'exécution du programme : elle
 
 RÉPARTITION DU TRAVAIL ET BILAN INDIVIDUEL
 
-Le projet a été réalisé seul par Merlin Goyet. J'ai réalisé les structures de données, les fonctions sur les fichiers et les dossiers, les déplacements, l'interface en ligne de commande, les tests et ce README.
+Le projet a été réalisé seul par Merlin Gohier. J'ai réalisé les structures de données, les fonctions sur les fichiers et les dossiers, les déplacements, l'interface en ligne de commande, les tests et ce README.
 
 La principale difficulté a été la gestion des tableaux dynamiques et des suppressions dans l'arborescence. Ce projet m'a permis de mieux comprendre les structures, les pointeurs, l'allocation dynamique et la gestion de la mémoire en C.
